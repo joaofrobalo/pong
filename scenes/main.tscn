@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7d4pa51mhcp3"]
+
+[ext_resource type="PackedScene" uid="uid://d3e601be1mcql" path="res://scenes/paddle.tscn" id="1_qffpt"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_x0rrx"]
+
+[node name="Main" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_right = 1152.0
+offset_bottom = 650.0
+texture = SubResource("CanvasTexture_x0rrx")
+
+[node name="Paddle" parent="." instance=ExtResource("1_qffpt")]
+
+[node name="Paddle2" parent="." instance=ExtResource("1_qffpt")]
+position = Vector2(1083, 291)
