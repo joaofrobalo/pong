@@ -1,17 +1,51 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7d4pa51mhcp3"]
+[gd_scene load_steps=7 format=3 uid="uid://c7d4pa51mhcp3"]
 
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_6k7dm"]
 [ext_resource type="PackedScene" uid="uid://d3e601be1mcql" path="res://scenes/paddle.tscn" id="1_qffpt"]
-[ext_resource type="PackedScene" uid="uid://ckyn4uugao3uo" path="res://scenes/pongball.tscn" id="3_2ev2e"]
+[ext_resource type="PackedScene" uid="uid://b2a1ojvsl0jak" path="res://scenes/ball_3.tscn" id="2_dtmuo"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_x0rrx"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rn1if"]
+size = Vector2(1181, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vsuqt"]
+size = Vector2(20, 654)
+
 [node name="Main" type="Node2D"]
+script = ExtResource("1_6k7dm")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0, 0, 0, 1)
 offset_right = 1152.0
 offset_bottom = 650.0
 texture = SubResource("CanvasTexture_x0rrx")
+
+[node name="Zones" type="Node2D" parent="."]
+
+[node name="top" type="StaticBody2D" parent="Zones"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zones/top"]
+position = Vector2(583, -8)
+shape = SubResource("RectangleShape2D_rn1if")
+
+[node name="bottom" type="StaticBody2D" parent="Zones"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Zones/bottom"]
+position = Vector2(570, 654)
+shape = SubResource("RectangleShape2D_rn1if")
+
+[node name="LeftGoal" type="Area2D" parent="Zones"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zones/LeftGoal"]
+position = Vector2(-12, 321)
+shape = SubResource("RectangleShape2D_vsuqt")
+
+[node name="RightGoal" type="Area2D" parent="Zones"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Zones/RightGoal"]
+position = Vector2(1163, 325)
+shape = SubResource("RectangleShape2D_vsuqt")
 
 [node name="Paddle" parent="." instance=ExtResource("1_qffpt")]
 side = "left"
@@ -20,5 +54,5 @@ side = "left"
 position = Vector2(1086, 273)
 side = "right"
 
-[node name="pongball" parent="." instance=ExtResource("3_2ev2e")]
-position = Vector2(573, 274)
+[node name="ball3" parent="." instance=ExtResource("2_dtmuo")]
+position = Vector2(570, 274)
