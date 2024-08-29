@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7d4pa51mhcp3"]
+[gd_scene load_steps=9 format=3 uid="uid://c7d4pa51mhcp3"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_6k7dm"]
 [ext_resource type="PackedScene" uid="uid://d3e601be1mcql" path="res://scenes/paddle.tscn" id="1_qffpt"]
@@ -10,7 +10,13 @@
 size = Vector2(1181, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vsuqt"]
-size = Vector2(20, 654)
+size = Vector2(29, 1128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhhl7"]
+size = Vector2(27.5, 1284)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nwi05"]
+font_size = 50
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_6k7dm")
@@ -38,14 +44,14 @@ shape = SubResource("RectangleShape2D_rn1if")
 [node name="LeftGoal" type="Area2D" parent="Zones"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zones/LeftGoal"]
-position = Vector2(-12, 321)
+position = Vector2(-42, 357)
 shape = SubResource("RectangleShape2D_vsuqt")
 
 [node name="RightGoal" type="Area2D" parent="Zones"]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Zones/RightGoal"]
-position = Vector2(1163, 325)
-shape = SubResource("RectangleShape2D_vsuqt")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zones/RightGoal"]
+position = Vector2(1198, 373)
+shape = SubResource("RectangleShape2D_xhhl7")
 
 [node name="Paddle" parent="." instance=ExtResource("1_qffpt")]
 side = "left"
@@ -56,3 +62,24 @@ side = "right"
 
 [node name="ball3" parent="." instance=ExtResource("2_dtmuo")]
 position = Vector2(570, 274)
+
+[node name="Player1Score" type="Label" parent="."]
+offset_left = 144.0
+offset_top = 24.0
+offset_right = 255.0
+offset_bottom = 73.0
+text = "0"
+label_settings = SubResource("LabelSettings_nwi05")
+horizontal_alignment = 1
+
+[node name="Player2Score" type="Label" parent="."]
+offset_left = 886.0
+offset_top = 27.0
+offset_right = 997.0
+offset_bottom = 96.0
+text = "0"
+label_settings = SubResource("LabelSettings_nwi05")
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="Zones/LeftGoal" to="." method="_on_left_goal_body_entered"]
+[connection signal="body_entered" from="Zones/RightGoal" to="." method="_on_right_goal_body_entered"]

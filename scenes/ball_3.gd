@@ -1,8 +1,11 @@
 extends CharacterBody2D
 
 var speed = 400.0
+@onready var timer = $Timer
 
 func _ready():
+	global_position = Vector2(550, 350)
+	await  timer.timeout
 	velocity.x = [-1, 1].pick_random()
 	velocity.y = [-1, 1].pick_random()
 
@@ -17,3 +20,5 @@ func _physics_process(delta):
 	if collision:
 		velocity = velocity.bounce(collision.get_normal())
 
+
+	
