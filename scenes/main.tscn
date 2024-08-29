@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c7d4pa51mhcp3"]
 
 [ext_resource type="PackedScene" uid="uid://d3e601be1mcql" path="res://scenes/paddle.tscn" id="1_qffpt"]
-[ext_resource type="PackedScene" uid="uid://fvnh85e87q26" path="res://scenes/paddle2.tscn" id="2_b7h3p"]
+[ext_resource type="PackedScene" uid="uid://ckyn4uugao3uo" path="res://scenes/pongball.tscn" id="3_2ev2e"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_x0rrx"]
 
@@ -14,6 +14,11 @@ offset_bottom = 650.0
 texture = SubResource("CanvasTexture_x0rrx")
 
 [node name="Paddle" parent="." instance=ExtResource("1_qffpt")]
+side = "left"
 
-[node name="Paddle2" parent="." instance=ExtResource("2_b7h3p")]
-position = Vector2(1062, 299)
+[node name="Paddle2" parent="." instance=ExtResource("1_qffpt")]
+position = Vector2(1086, 273)
+side = "right"
+
+[node name="pongball" parent="." instance=ExtResource("3_2ev2e")]
+position = Vector2(573, 274)
